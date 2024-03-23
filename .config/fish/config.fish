@@ -1,5 +1,12 @@
+set -Ux EDITOR nvim
+
 set fish_greeting
 starship init fish | source
+
+if status is-interactive
+and not set -q TMUX
+    exec tmux
+end
 
 function vol
   pamixer --set-volume $argv
