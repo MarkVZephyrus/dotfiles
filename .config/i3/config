@@ -212,6 +212,7 @@ set_from_resource $bg i3wm.color11
 #____________________
 
 gaps inner 2
+gaps top 22
 default_border pixel 0
 default_floating_border pixel 0
 
