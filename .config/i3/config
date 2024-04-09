@@ -59,6 +59,7 @@ bindsym $mod+x exec rofi -show power-menu -modi power-menu:./.config/rofi/rofi-p
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run
 bindsym --release $mod+Shift+s exec scrot -s
+bindsym $mod+Tab exec --no-startup-id rofi -show window 
 
 #############################################################
 
