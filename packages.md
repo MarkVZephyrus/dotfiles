@@ -120,3 +120,4 @@ zoxide
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
+scrot
