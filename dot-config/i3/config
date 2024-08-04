@@ -56,9 +56,10 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+b exec firefox
 # bindsym $mod+x exec rofi -show power-menu -modi power-menu:./.config/rofi/rofi-power-menu
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run
 bindsym --release $mod+Shift+s exec scrot -s
+bindsym $mod+p move workspace to output right
 
 #############################################################
 
@@ -227,5 +228,3 @@ for_window [class="Lxappearance"] floating enable
 for_window [class="feh"] floating enable
 
 ##################################################################################
-
-workspace 10 output HDMI-0

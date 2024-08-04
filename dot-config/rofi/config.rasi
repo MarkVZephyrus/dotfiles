@@ -7,5 +7,7 @@ configuration {
 //  show-icons: true;
 }
 
-@theme "theme.rasi"
+//@theme "theme.rasi"
 
+//@theme "/home/mayank/.local/share/rofi/themes/simple-tokyonight.rasi"
+@theme "/home/mayank/.local/share/rofi/themes/squared-nord.rasi"
