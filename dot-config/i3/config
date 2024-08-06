@@ -55,7 +55,7 @@ bindsym $mod+Shift+q kill
 #____________________
 
 bindsym $mod+b exec firefox
-# bindsym $mod+x exec rofi -show power-menu -modi power-menu:./.config/rofi/rofi-power-menu
+bindsym $mod+x exec ~/.config/i3/i3lock.sh 
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run
 bindsym --release $mod+Shift+s exec scrot -s
@@ -186,21 +186,23 @@ bindsym $mod+r mode "resize"
 
 set_from_resource $fg i3wm.color1 
 set_from_resource $bg i3wm.color11 
-
-set $color1 #00ffd2 
+font pango: JetBrains Mono 6
+set $color5 #00ffd2 
 set $color2 #ff4499
 set $color3 #000000
 set $color4 #0a0047
-set $color5 #004687
+set $color1 #004687
 set $color6 #DDDDDD
-
+client.focused           #9aa5ce #364A82 #c0caf5 #9aa5ce   #9aa5ce
+client.focused_inactive  #16161d #414868 #c0caf5 #16161d   #16161d
+client.unfocused         #16161d #414868 #c0caf5 #16161d   #16161d
 # target                 title     bg    text    indicator  border
-client.focused           $color1 $color1 $color6  $color2   $color1
-client.focused_inactive  $color4 $color1 $color6  $color2   $color4
-client.unfocused         $color4 $color1 $color6  $color2   $color4
-client.urgent            $color3 $color1 $color3  $color4   $color3
-client.placeholder       $color4 $color1 $color6  $color4   $color4
-client.background        $color1
+# client.focused           $color1 $color1 $color6  $color2   $color1
+# client.focused_inactive  $color4 $color1 $color6  $color2   $color4
+# client.unfocused         $color4 $color1 $color6  $color2   $color4
+# client.urgent            $color3 $color1 $color3  $color4   $color3
+# client.placeholder       $color4 $color1 $color6  $color4   $color4
+# client.background        $color1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

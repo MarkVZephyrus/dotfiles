@@ -15,3 +15,20 @@
     background = "#292e42"
     foreground = "#db4b4b"
     frame_color = "#db4b4b"
+
+[global]
+  origin = bottom-center
+  offset = 0x10
+  width = 250
+  hight = 50
+  frame_width = 0 
+  font = NotoSansNerdFont 6
+  format = <b>%s</b>\n%b\n<i>%a</i> 󰐱
+  alignment = right
+  word_wrap = false
+  ellipsize = end
+  vertical_alignment = center
+  icon_position = left
+  max_icon_size = 40 
+  notification_limit = 2
+  gap_size = 2 
