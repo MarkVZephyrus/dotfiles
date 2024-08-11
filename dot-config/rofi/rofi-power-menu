@@ -19,13 +19,13 @@ all=(shutdown reboot suspend hibernate logout lockscreen)
 show=("${all[@]}")
 
 declare -A texts
-texts[lockscreen]="lock screen"
-texts[switchuser]="switch user"
-texts[logout]="log out"
-texts[suspend]="suspend"
-texts[hibernate]="hibernate"
-texts[reboot]="reboot"
-texts[shutdown]="shut down"
+texts[lockscreen]=" Lock Screen"
+texts[switchuser]=" switch user"
+texts[logout]=" Log Out"
+texts[suspend]=" Suspend"
+texts[hibernate]=" Hibernate"
+texts[reboot]=" Reboot"
+texts[shutdown]=" Shut Down"
 
 declare -A icons
 icons[lockscreen]="\Uf033e"
@@ -38,9 +38,9 @@ icons[shutdown]="\Uf0425"
 icons[cancel]="\Uf0156"
 
 declare -A actions
-actions[lockscreen]="loginctl lock-session ${XDG_SESSION_ID-}"
+actions[lockscreen]="~/.config/i3/i3lock.sh"
 #actions[switchuser]="???"
-actions[logout]="loginctl terminate-session ${XDG_SESSION_ID-}"
+actions[logout]="i3-msg exit"
 actions[suspend]="systemctl suspend"
 actions[hibernate]="systemctl hibernate"
 actions[reboot]="systemctl reboot"

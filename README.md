@@ -1,46 +1,30 @@
-# My Linux config
-Not much customisation here. The main things are i3, polybar and rofi.
+# An i3 Arch Linux Tokyonight theme
+Here we use rofi, polybar and i3 for main ui.
+## Install
 GNU Stow is being used so after cloning this repo,
 * Install ``` stow ``` on your machine
-* Enter the dotfiles folder (to be placed in ```$HOME```) and run ```stow .```
+* Enter the dotfiles folder (to be placed in ```$HOME```) and run ```stow . --dotfiles```
 * Dandy.
-## Fonts
-It is imperative that you use a Nerd font. My ```kitty``` uses JetBrainsMono Nerd Font(pacman) and my ```polybar``` uses GoMono Nerd Font(manual).
-## Pywal
-```kitty```, ```polybar``` and ```rofi``` use ```pywal```. Install the package ```pywal``` and run:
+_**Packages:**_
+```packages.md``` contains a list of all user installed packages from pacman **and yay**, using the command 
 ```bash
-wal -i Path/to/bg.jpg
+pacman -Qqe > packages.md
+``` 
+
+This list can be used to easilty reinsatll all dependecies of this config along with many handy destop services like bluetooth, using
+```bash
+yay -S - < packages.md
 ```
-That is all.
-## Fish + Starship
-Install both ```fish``` and ```starship``` packages on your machine.
-Not much customisation done here.
-Some aliases:
-* ```xbl``` for ```xbacklight```
-* ```vol``` for ```pamixer``` to set volume. (I have no clue how pulseaudio, and audio in general works in linux.)
 
-So having these two things can help.
+As you can see having ```yay``` installed is a prerequisite for this.
+Another thing to note is that to the best of my efforts the file ```packages.md``` only contains packages required for a smooth _desktop_ experience and not packages that are more specialized. Importantly, packages like ```nvidia```, ```sddm``` and ```firefox``` are not included, but ```xorg```, ```i3```, fonts and similars are.
+## zsh + Starship
+Starship is the most starightforward theme, fits my needs best. Highlighting and auto-complete should already work after above steps.
+I used [Josean Martinez' CLI tools video](https://youtu.be/mmqDYw9C30I?si=OzvE4uISTOvqCLoq "The video") to add ```bat, fzf, zoxide``` and other tools to the shell.
 ## i3
-Depends on
-1. ```polybar```
-2. ```rofi```
-3. ```pywal```
-4. ```feh```(?)
-
-A picom config exist in this repo but picom init has been commented out of i3. I dont see much use for picom, and prefer my WM without it. Yet its there for when I change my mind. Install ```picom``` for Picom.
-
-Some feature implementations are pending and a thorough cleanup is required.
-## Kitty
-Just font config and disabled keymaps(I use tmux).
-## Neofetch
-Standard neofetch for now. I have this here because I may change this, although I dont strongly feel any need to.
-## Picom
-Non-functional. Edit the ```i3/config``` file for it to be used. I dont want to though.
-## Polybar
-Apart from the GoMono Nerd Font, no dependency other than ```pywal```. Just have ```polybar``` installed on your machine.
-## Ranger
-Install ```ranger```. A dev-icons plugin and an archive plugin has been added. Links to both the plugins are in ```rc.conf``` and must be downloaded manually.
-## Rofi
-Install ```rofi```. No dependency yet other than ```pywal```, although it is barely configured. Requires more work.
-## Tmux
-Install ```tmux```. Clone tpm in ```$HOME/.tmux/plugins/```. This must be done manually.  After that go ```ctrl+<Space> I``` to install packages when in ```tmux```.
+Pretty starightforward, ```i3lock-color``` configured.
+I dont feel the need for a compositor like ```picom```.
+## ncspot
+Because of experimental features only availaible by compiling the script yourself, you will have to do just that. Install ```cargo``` and the [repository](https://github.com/hrkfdn/ncspot.git).
+## .xsession
+This script runs *after* ```sddm``` login. I have added in it a command to set my monitor refresh rate. This may cause issues if you have a different monitor configuration.

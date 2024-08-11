@@ -56,6 +56,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+b exec firefox
 bindsym $mod+x exec ~/.config/i3/i3lock.sh 
+bindsym $mod+Shift+x exec rofi -show power-menu -modi "power-menu:$HOME/.config/rofi/rofi-power-menu --choices='logout/reboot/shutdown' --confirm=''" 
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run
 bindsym --release $mod+Shift+s exec scrot -s
