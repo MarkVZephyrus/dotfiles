@@ -23,8 +23,22 @@ function xbl ()
 {
   xbacklight -set $1
 }
+funtion floating (){
+  $1 &
+  sleep 0.5
+  i3-msg "$(xprop -root | awk '/WM_CLASS\(STRINGS\)/{print $NF}') floating enable"
+}
 alias logout="i3-msg exit"
 alias ls="eza --color=always --long --git --icons=always --no-user --no-permissions --all"
+function tma () {
+  tmux attach -t $1
+}
+alias obsidiansync="~/.config/scripts/zsh/ObsidianSync.sh"
+alias clock="tty-clock -S -n -c"
+function kbl (){
+  setxkbmap $1
+  echo "Current Keyboard Layout set to: $(setxkbmap -query | grep layout | awk '{ print $2 }')" 
+}
 
 # THEME
 eval "$(starship init zsh)"
@@ -77,3 +91,4 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export PATH=$PATH:/home/mayank/.cargo/bin
+export PATH=$PATH:/home/mayank/.local/bin

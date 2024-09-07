@@ -34,6 +34,7 @@ exec_always --no-startup-id unclutter &
 #exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 #exec --no-startup-id wal -R
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id xss-lock -- ~/.config/i3/i3lock.sh
 
 #################################################################################
 
@@ -54,12 +55,13 @@ bindsym $mod+Shift+q kill
 # Thine arms, Lord!
 #____________________
 
-bindsym $mod+b exec firefox
+# bindsym $mod+b exec firefox
 bindsym $mod+x exec ~/.config/i3/i3lock.sh 
-bindsym $mod+Shift+x exec rofi -show power-menu -modi "power-menu:$HOME/.config/rofi/rofi-power-menu --choices='logout/reboot/shutdown' --confirm=''" 
+bindsym $mod+Shift+x exec rofi -show power-menu -modi "power-menu:$HOME/.config/rofi/rofi-power-menu --choices='suspend/hibernate/logout/reboot/shutdown' --confirm=''" 
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run
 bindsym --release $mod+Shift+s exec scrot -s
+bindsym --release $mod+Mod1+s exec scrot -u
 bindsym $mod+p move workspace to output right
 
 #############################################################
@@ -156,7 +158,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec i3-msg exit -- make a shell alias for $ i3-msg exit
+# bindsym $mod+Shift+e exec i3-msg exit -- make a shell alias for $ i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -230,5 +232,7 @@ default_floating_border pixel 0
 for_window [class="Lxappearance"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Blueman-manager"] floating enable
+for_window [class="OpenGL"] floating enable
+for_window [class="pavucontrol"] floating enable
 
 ##################################################################################
