@@ -6,7 +6,7 @@ if [[ "$(git -C "$repo" status --porcelain=v1 2>/dev/null | wc -l)" -ne 0 ]]; th
   git -C "$repo" commit -m "sync"
   git -C "$repo" push
   echo "Pushed local changes."
-elif [[ "$(git fetch && git -C "$repo" status -sb)" =~ "behind" ]]; then
+elif [[ "$(git -C "$repo" fetch && git -C "$repo" status -sb)" =~ "behind" ]]; then
   git -C "$repo" pull -p
   echo "Pulled remote changes."
 else
