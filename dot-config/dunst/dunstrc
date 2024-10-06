@@ -17,10 +17,10 @@
     frame_color = "#db4b4b"
 
 [global]
-  origin = bottom-center
-  offset = 0x10
+  origin = bottom-right
+  offset = 10x10
   width = 250
-  hight = 50
+  height = 50
   frame_width = 0 
   font = NotoSansNerdFont 6
   format = <b>%s</b>\n%b\n<i>%a</i> 󰐱
