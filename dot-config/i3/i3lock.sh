@@ -8,34 +8,34 @@ TEXT='#c0caf5'
 WRONG='#ff555522'
 VERIFYING='#41445800'
 
-#put for background image: -i ~/.config/i3/base.png 
-i3lock -n -L  \
-    --insidever-color=$CLEAR \
-    --ringver-color=$VERIFYING \
-    \
-    --insidewrong-color=$WRONG \
-    --ringwrong-color=$DEFAULT \
-    \
-    --inside-color=$CLEAR \
-    --ring-color=$DEFAULT \
-    --line-color=$BLANK \
-    --separator-color=$DEFAULT \
-    \
-    --verif-color=$TEXT \
-    --wrong-color=$TEXT \
-    --time-color=$TEXT \
-    --date-color=$TEXT \
-    --layout-color=$TEXT \
-    --keyhl-color=$KEY \
-    --bshl-color=$WRONG \
-    \
-    --screen 1 \
-    --radius 95 \
-    --blur 5 \
-    --indicator \
-    --clock \
-    --time-str="%H:%M" \
-#    --date-str="%A, %Y-%m-%d" \
+#put for background image: -i ~/.config/i3/base.png
+i3lock -n -L \
+  --insidever-color=$CLEAR \
+  --ringver-color=$VERIFYING \
+  \
+  --insidewrong-color=$WRONG \
+  --ringwrong-color=$DEFAULT \
+  \
+  --inside-color=$CLEAR \
+  --ring-color=$DEFAULT \
+  --line-color=$BLANK \
+  --separator-color=$DEFAULT \
+  \
+  --verif-color=$TEXT \
+  --wrong-color=$TEXT \
+  --time-color=$TEXT \
+  --date-color=$TEXT \
+  --layout-color=$TEXT \
+  --keyhl-color=$KEY \
+  --bshl-color=$WRONG \
+  \
+  --screen 1 \
+  --radius 95 \
+  --blur 10 \
+  --indicator \
+  --clock \
+  --time-str="%H:%M" \
+  --date-str="%d.%m.%Y %A"
 
 # bar layout
 

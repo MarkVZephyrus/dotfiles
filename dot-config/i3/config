@@ -213,5 +213,6 @@ for_window [class="feh"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="OpenGL"] floating enable
 for_window [class="pavucontrol"] floating enable
+for_window [class="qimgv"] floating enable
 
 ##################################################################################
