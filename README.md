@@ -11,20 +11,12 @@ _**Packages:**_
 pacman -Qqe > packages.md
 ``` 
 
-This list can be used to easilty reinsatll all dependecies of this config along with many handy destop services like bluetooth, using
+This list can be used to easilty reinstall all dependecies of this config along with many handy destop services like bluetooth, using
 ```bash
 yay -S - < packages.md
 ```
 
 As you can see having ```yay``` installed is a prerequisite for this.
-Another thing to note is that to the best of my efforts the file ```packages.md``` only contains packages required for a smooth _desktop_ experience and not packages that are more specialized. Importantly, packages like ```nvidia```, ```sddm``` and ```firefox``` are not included, but ```xorg```, ```i3```, fonts and similars are.
-## zsh + Starship
-Starship is the most starightforward theme, fits my needs best. Highlighting and auto-complete should already work after above steps.
-I used [Josean Martinez' CLI tools video](https://youtu.be/mmqDYw9C30I?si=OzvE4uISTOvqCLoq "The video") to add ```bat, fzf, zoxide``` and other tools to the shell.
-## i3
-Pretty starightforward, ```i3lock-color``` configured.
-I dont feel the need for a compositor like ```picom```.
-## ncspot
-Because of experimental features only availaible by compiling the script yourself, you will have to do just that. Install ```cargo``` and the [repository](https://github.com/hrkfdn/ncspot.git).
-## .xsession
-This script runs *after* ```sddm``` login. I have added in it a command to set my monitor refresh rate. This may cause issues if you have a different monitor configuration.
+This used to be a list reserved for only the package that contribute to a functional desktop experience. Now I have added pretty much everything I like to have like ```blender```,```spotify``` and similar stuff. I also added ```nvidia```, maybe it or some other package causes problems so dont take this list as a shotcut still do needed homework.
+
+I have used help from the internet, I feel like I should source them, I won't. Josean Martinez was one that helped.
