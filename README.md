@@ -1,4 +1,6 @@
 # An i3 Arch Linux Tokyonight theme
+![ss1](https://github.com/MarkVZephyrus/dotfiles/blob/master/ss1.png?raw=true)
+![ss2](https://github.com/MarkVZephyrus/dotfiles/blob/master/ss2.png?raw=true)
 Here we use rofi, polybar and i3 for main ui.
 ## Install
 GNU Stow is being used so after cloning this repo,
