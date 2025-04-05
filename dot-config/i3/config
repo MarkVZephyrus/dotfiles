@@ -29,12 +29,13 @@ exec --no-startup-id nm-applet
 #Thine commands, Lord!
 #_____________________
 
-exec_always --no-startup-id xsetroot -solid "#111111"
+exec_always --no-startup-id hsetroot -solid "#111111"
 exec_always --no-startup-id unclutter &
-#exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
+exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 #exec --no-startup-id wal -R
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id xss-lock -- ~/.config/i3/i3lock.sh
+exec --no-startup-id dunst
 
 #################################################################################
 
@@ -46,7 +47,8 @@ floating_modifier $mod
 #tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec kitty -e tmux
+bindsym $mod+Shift+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -57,12 +59,14 @@ bindsym $mod+Shift+q kill
 
 # bindsym $mod+b exec firefox
 bindsym $mod+x exec ~/.config/i3/i3lock.sh 
-bindsym $mod+Shift+x exec rofi -show power-menu -modi "power-menu:$HOME/.config/rofi/rofi-power-menu --choices='suspend/hibernate/logout/reboot/shutdown' --confirm=''" 
-bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+Shift+x exec rofi -show power-menu -modi "power-menu:$HOME/.config/rofi/rofi-power-menu --choices='logout/reboot/shutdown' --confirm=''" 
+# bindcode 133 --release exec "rofi -show drun -show-icons"
+bindsym $mod+d exec "rofi -show drun -show-icons"
 bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run
 bindsym --release $mod+Shift+s exec scrot -s
 bindsym --release $mod+Mod1+s exec scrot -u
 bindsym $mod+p move workspace to output right
+bindsym $mod+Mod1+l exec ~/.config/scripts/polybar/kbl.sh --switch
 
 #############################################################
 
@@ -127,7 +131,12 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "0"
+
+set $monitor_left "eDP-2"
+set $monitor_right "DP-1-0"
+
+workspace $ws10 output "eDP-2"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -204,7 +213,7 @@ title_align center
 # Thine Laws, m'Lord!
 #____________________
 
-gaps inner 1
+# gaps inner 1
 default_border pixel 0
 default_floating_border pixel 0
 

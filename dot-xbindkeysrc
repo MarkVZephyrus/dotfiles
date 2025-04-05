@@ -74,6 +74,8 @@
   XF86MonBrightnessUp
 "xbacklight -dec 10"
   XF86MonBrightnessDown
+"/home/mayank/.config/scripts/asus.sh"
+  XF86Launch3
 ##################################
 # End of xbindkeys configuration #
 ##################################

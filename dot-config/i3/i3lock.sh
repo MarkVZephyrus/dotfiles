@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BLANK='#00000000'
-CLEAR='#41486822'
+CLEAR='#41486800'
 DEFAULT='#00000000'
 KEY='#bb9af7'
 TEXT='#c0caf5'
@@ -10,6 +10,8 @@ VERIFYING='#41445800'
 
 #put for background image: -i ~/.config/i3/base.png
 i3lock -n -L \
+  --color='#111111' \
+  \
   --insidever-color=$CLEAR \
   --ringver-color=$VERIFYING \
   \
@@ -31,11 +33,12 @@ i3lock -n -L \
   \
   --screen 1 \
   --radius 95 \
-  --blur 10 \
+  \
   --indicator \
   --clock \
   --time-str="%H:%M" \
   --date-str="%d.%m.%Y %A"
+# \ -i ~/Pictures/Backgrounds/Witcher_IV_Wallpaper_01_13840x2160_EN.jpeg # --blur 10 \
 
 # bar layout
 

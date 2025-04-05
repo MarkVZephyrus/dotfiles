@@ -1,0 +1,16 @@
+inoremap <Left> <C-o>:echo "No"<CR>
+nnoremap <Left> :echo "No"<CR>
+inoremap <Right> <C-o>:echo "No"<CR>
+nnoremap <Right> :echo "No"<CR>
+inoremap <Up> <C-o>:echo "No"<CR>
+nnoremap <Up> :echo "No"<CR>
+inoremap <Down> <C-o>:echo "No"<CR>
+nnoremap <Down> :echo "No"<CR>
+
+inoremap <BS> <C-o>:echo "No"<CR>
+inoremap <CR> <C-o>:echo "No"<CR>
+
+set number
+set autoindent
+set tabstop=4
+syntax on
