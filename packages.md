@@ -118,7 +118,7 @@ rog-control-center
 rsync
 rust
 sassc
-scrot
+maim
 sddm
 sddm-kcm
 spotify-edge

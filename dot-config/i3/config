@@ -63,8 +63,7 @@ bindsym $mod+Shift+x exec rofi -show power-menu -modi "power-menu:$HOME/.config/
 # bindcode 133 --release exec "rofi -show drun -show-icons"
 bindsym $mod+d exec "rofi -show drun -show-icons"
 bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run
-bindsym --release $mod+Shift+s exec scrot -s
-bindsym --release $mod+Mod1+s exec scrot -u
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/screenshot.sh select
 bindsym $mod+p move workspace to output right
 bindsym $mod+Mod1+l exec ~/.config/scripts/polybar/kbl.sh --switch
 
