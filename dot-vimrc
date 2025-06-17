@@ -12,5 +12,5 @@ inoremap <CR> <C-o>:echo "No"<CR>
 
 set number
 set autoindent
-set tabstop=4
+set tabstop=2
 syntax on

@@ -33,6 +33,7 @@ exec_always --no-startup-id hsetroot -solid "#111111"
 exec_always --no-startup-id unclutter &
 exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 #exec --no-startup-id wal -R
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id xss-lock -- ~/.config/i3/i3lock.sh
 exec --no-startup-id dunst
@@ -47,8 +48,7 @@ floating_modifier $mod
 #tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty -e tmux
-bindsym $mod+Shift+Return exec kitty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -62,8 +62,13 @@ bindsym $mod+x exec ~/.config/i3/i3lock.sh
 bindsym $mod+Shift+x exec rofi -show power-menu -modi "power-menu:$HOME/.config/rofi/rofi-power-menu --choices='logout/reboot/shutdown' --confirm=''" 
 # bindcode 133 --release exec "rofi -show drun -show-icons"
 bindsym $mod+d exec "rofi -show drun -show-icons"
-bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run
+bindsym $mod+Shift+w exec "rofi -show window -show-icons"
+bindsym $mod+b exec rofi -show recursivebrowser -show-icons
+bindsym $mod+Shift+b exec rofi -show filebrowser -show-icons
+bindsym $mod+Shift+d exec --no-startup-id sudo rofi -show run -terminal rofi-sensible-terminal
+bindsym $mod+Mod1+s exec --no-startup-id ~/.config/i3/screenshot.sh full
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/screenshot.sh select
+bindsym $mod+Control+s exec --no-startup-id ~/.config/i3/screenshot.sh window
 bindsym $mod+p move workspace to output right
 bindsym $mod+Mod1+l exec ~/.config/scripts/polybar/kbl.sh --switch
 
@@ -132,10 +137,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "0"
 
-set $monitor_left "eDP-2"
-set $monitor_right "DP-1-0"
+set $monitor_left "DP-2"
+set $monitor_right "DP-0"
 
-workspace $ws10 output "eDP-2"
+workspace $ws10 output "DP-2"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

@@ -4,6 +4,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 export EDITOR=nvim
 export VISUAL=nvim
+export TERMINAL=kitty
 unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -19,9 +20,17 @@ function vol ()
 {
   pamixer --set-volume=$1
 }
-function xbl ()
+function ibl ()
 {
   xbacklight -set $1
+}
+function dbl ()
+{
+  ddcutil setvcp 10 $1
+}
+function bl (){
+  xbacklight -set $1
+  ddcutil setvcp 10 $1
 }
 funtion floating (){
   $1 &
@@ -39,6 +48,7 @@ function kbl (){
   setxkbmap $1
   echo "Current Keyboard Layout set to: $(setxkbmap -query | grep layout | awk '{ print $2 }')" 
 }
+alias nsr="nvim +SessionRestore"
 
 # THEME
 eval "$(starship init zsh)"
@@ -93,9 +103,4 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 export PATH=$PATH:/home/mayank/.cargo/bin
 export PATH=$PATH:/home/mayank/.local/bin
 
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   if [ "$(tmux ls)" ] && [ ! "$TMUX" ]; then
-#     exec tmux a
-#   fi
-#   exec tmux
-# fi
+bindkey -v

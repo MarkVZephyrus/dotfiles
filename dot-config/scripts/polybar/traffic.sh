@@ -1,61 +1,46 @@
 #!/bin/bash
 
-print_bytes() {
-  if [ "$1" -eq 0 ] || [ "$1" -lt 1000 ]; then
-    bytes="0 kB/s"
-  elif [ "$1" -lt 1000000 ]; then
-    bytes="$(echo "$1/1000" | bc -l | LANG=C xargs printf "%.f\n") kB/s"
-  else
-    bytes="$(echo "$1/1000000" | bc -l | LANG=C xargs printf "%.1f\n") MB/s"
-  fi
-
-  echo "$bytes"
-}
-
-print_bit() {
-  if [ "$1" -eq 0 ] || [ "$1" -lt 10 ]; then
-    bit="0 B"
-  elif [ "$1" -lt 100 ]; then
-    bit="$(echo "$1*8" | bc -l | LANG=C xargs printf "%.f\n") B"
-  elif [ "$1" -lt 100000 ]; then
-    bit="$(echo "$1*8/1000" | bc -l | LANG=C xargs printf "%.f\n") K"
-  else
-    bit="$(echo "$1*8/1000000" | bc -l | LANG=C xargs printf "%.1f\n") M"
-  fi
-
-  echo "$bit"
-}
-
 INTERVAL=1
-INTERFACES="eno2"
+INTERFACES=$(ls /sys/class/net | grep -v lo)
 
-declare -A bytes
+print_speed() {
+  local bytes=$1
+  local unit
 
-for interface in $INTERFACES; do
-  bytes[past_rx_$interface]="$(cat /sys/class/net/"$interface"/statistics/rx_bytes)"
-  bytes[past_tx_$interface]="$(cat /sys/class/net/"$interface"/statistics/tx_bytes)"
+  if ((bytes < 1000)); then
+    printf "0 kB/s"
+  elif ((bytes < 1000000)); then
+    awk -v b="$bytes" 'BEGIN { printf "%.0f kB/s", b/1000 }'
+  else
+    awk -v b="$bytes" 'BEGIN { printf "%.1f MB/s", b/1000000 }'
+  fi
+}
+
+declare -A prev_rx prev_tx
+
+for iface in $INTERFACES; do
+  read -r prev_rx[$iface] <"/sys/class/net/$iface/statistics/rx_bytes"
+  read -r prev_tx[$iface] <"/sys/class/net/$iface/statistics/tx_bytes"
 done
 
 while true; do
-  down=0
-  up=0
+  total_rx=0
+  total_tx=0
 
-  for interface in $INTERFACES; do
-    bytes[now_rx_$interface]="$(cat /sys/class/net/"$interface"/statistics/rx_bytes)"
-    bytes[now_tx_$interface]="$(cat /sys/class/net/"$interface"/statistics/tx_bytes)"
+  for iface in $INTERFACES; do
+    read -r now_rx <"/sys/class/net/$iface/statistics/rx_bytes"
+    read -r now_tx <"/sys/class/net/$iface/statistics/tx_bytes"
 
-    bytes_down=$(((${bytes[now_rx_$interface]} - ${bytes[past_rx_$interface]}) / $INTERVAL))
-    bytes_up=$(((${bytes[now_tx_$interface]} - ${bytes[past_tx_$interface]}) / $INTERVAL))
+    diff_rx=$(((now_rx - prev_rx[$iface]) / INTERVAL))
+    diff_tx=$(((now_tx - prev_tx[$iface]) / INTERVAL))
 
-    down=$(("$down" + "$bytes_down"))
-    up=$(("$up" + "$bytes_up"))
+    total_rx=$((total_rx + diff_rx))
+    total_tx=$((total_tx + diff_tx))
 
-    bytes[past_rx_$interface]=${bytes[now_rx_$interface]}
-    bytes[past_tx_$interface]=${bytes[now_tx_$interface]}
+    prev_rx[$iface]=$now_rx
+    prev_tx[$iface]=$now_tx
   done
 
-  echo "󰁆 $(print_bytes $down) 󰁞 $(print_bytes $up)"
-  # echo "Download: $(print_bit $down) / Upload: $(print_bit $up)"
-
-  sleep $INTERVAL
+  echo "󰁆 $(print_speed $total_rx) 󰁞 $(print_speed $total_tx)"
+  sleep "$INTERVAL"
 done

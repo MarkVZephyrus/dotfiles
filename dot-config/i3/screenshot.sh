@@ -8,7 +8,9 @@ main() {
   full) maim --format=png $FILE_PATH ;;
   select) maim --select $FILE_PATH ;;
   window) maim --window $(xdotool getactivewindow) $FILE_PATH ;;
+  screen) maim -x :0.0 $FILE_PATH ;;
   esac
 }
 
 main "$@"
+notify-send "Screenschot saved." "Screenshot saved at ~/Pictures/Screenshots." --app-name="Maim" -i $FILE_PATH

@@ -5,17 +5,17 @@ CLEAR='#41486800'
 DEFAULT='#00000000'
 KEY='#bb9af7'
 TEXT='#c0caf5'
-WRONG='#ff555522'
+WRONG='#ff757f'
 VERIFYING='#41445800'
 
 #put for background image: -i ~/.config/i3/base.png
-i3lock -n -L \
+i3lock -n -e \
   --color='#111111' \
   \
   --insidever-color=$CLEAR \
   --ringver-color=$VERIFYING \
   \
-  --insidewrong-color=$WRONG \
+  --insidewrong-color=$DEFAULT \
   --ringwrong-color=$DEFAULT \
   \
   --inside-color=$CLEAR \
@@ -24,7 +24,7 @@ i3lock -n -L \
   --separator-color=$DEFAULT \
   \
   --verif-color=$TEXT \
-  --wrong-color=$TEXT \
+  --wrong-color=$WRONG \
   --time-color=$TEXT \
   --date-color=$TEXT \
   --layout-color=$TEXT \
@@ -32,13 +32,21 @@ i3lock -n -L \
   --bshl-color=$WRONG \
   \
   --screen 1 \
-  --radius 95 \
+  --radius 100 \
   \
   --indicator \
   --clock \
   --time-str="%H:%M" \
-  --date-str="%d.%m.%Y %A"
-# \ -i ~/Pictures/Backgrounds/Witcher_IV_Wallpaper_01_13840x2160_EN.jpeg # --blur 10 \
+  --time-font="JetBrainsMono NF" \
+  --date-str="%d.%m.%Y, %A" \
+  --date-font="JetBrainsMono NF" \
+  --verif-text="" \
+  --verif-font="JetBrainsMono NF" \
+  --wrong-text="" \
+  --wrong-font="JetBrainsMono NF" \
+  --noinput-text="?" \
+  -i ~/Pictures/bg/lucy.png -F \
+  --pass-media --pass-screen --pass-power --pass-volume
 
 # bar layout
 
